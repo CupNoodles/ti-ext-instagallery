@@ -1,0 +1,21 @@
+{
+    "code": "cupnoodles.instagallery",
+    "name": "Instagram Gallery for Tasty Igniter",
+    "description": "Load Instagram Images into a TastyIgniter Gallyer",
+    "version": "v1.0.0",
+    "author": "CupNoodles",
+    "icon": {
+      "class": "fab fa-instagram",
+      "backgroundColor": "#1B294B",
+      "color": "#fff"
+    },
+    "homepage": "",
+    "require": {
+      "igniter.cart" : "*",
+      "igniter.coupons": "*",
+      "igniter.local": "*",
+      "igniter.user": "*",
+      "igniter.payregister": "*",
+      "igniter.pages": "*"
+    }
+  }
