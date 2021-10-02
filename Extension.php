@@ -57,7 +57,7 @@ class Extension extends BaseExtension
                 $controller = new \CupNoodles\InstaGallery\Controllers\InstaAccounts();
                 $controller->onRefreshToken('edit', $account);
             }
-        })->monthly();
+        })->cron('0 1 */'.(InstaGallerySettings::get('token_update_frequency')).' * *');
         
 
         // for each instagram account, schedule a media refresh every X minutes
@@ -67,7 +67,7 @@ class Extension extends BaseExtension
                 $controller->onRefreshMedia('edit', $account);
 
             }
-        })->everyFifteenMinutes();
+        })->cron('*/'.(InstaGallerySettings::get('media_update_frequency')).' * * * *');
 
     }
 

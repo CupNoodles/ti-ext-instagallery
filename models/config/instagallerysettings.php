@@ -22,13 +22,13 @@ return [
                 'label' => 'lang:cupnoodles.instagallery::default.token_update_frequency',
                 'type' => 'text',
                 'span' => 'left',
-                'default' => '50',
+                'default' => '30',
             ],
             'media_update_frequency' => [
                 'label' => 'lang:cupnoodles.instagallery::default.media_update_frequency',
                 'type' => 'text',
                 'span' => 'left',
-                'default' => '50',
+                'default' => '15',
             ],
         ],
         'rules' => [

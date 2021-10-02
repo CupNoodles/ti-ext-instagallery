@@ -98,8 +98,6 @@ $config['form']['tabs'] = [
             'type' => 'text',
             'span' => 'right',
         ],
-
-
     ],
 ];
 
