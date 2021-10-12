@@ -27,6 +27,7 @@ class InstaMedia extends Model
         'media_type',
         'caption',
         'media_url',
+        'permalink',
         'created_at',
         'updated_at'
     ];

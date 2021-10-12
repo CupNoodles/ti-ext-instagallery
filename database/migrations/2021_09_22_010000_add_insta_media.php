@@ -23,6 +23,7 @@ class AddInstaMedia extends Migration
             $table->string('media_type');
             $table->text('caption');
             $table->text('media_url');
+            $table->string('permalink');
             $table->nullableTimestamps();
         });
     }

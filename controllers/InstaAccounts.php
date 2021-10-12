@@ -12,7 +12,7 @@ use CupNoodles\InstaGallery\Models\InstaMedia;
 class InstaAccounts extends \Admin\Classes\AdminController
 {
 
-    const LIST_URL = "https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,timestamp&access_token=";
+    const LIST_URL = "https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,timestamp,permalink&access_token=";
     const REFRESH_URL = "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=";
 
     public $implement = [
@@ -129,6 +129,7 @@ class InstaAccounts extends \Admin\Classes\AdminController
                         'media_type' => $media->media_type,
                         'media_url' => $media->media_url,
                         'created_at' => $media->timestamp,
+                        'permalink' => $media->permalink,
                         'updated_at' => DB::raw('now()')
                     ]);
                 }
