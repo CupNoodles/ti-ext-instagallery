@@ -36,7 +36,7 @@ class InstaMedia extends Model
     ];
 
     public static function getByUsername($username){
-        $account_id = InstaAccounts::where('username', $username)->find(1)->id;
+        $account_id = InstaAccounts::where('username', $username)->first()->id;
         return static::where('account_id', $account_id)->get();
     }
  
