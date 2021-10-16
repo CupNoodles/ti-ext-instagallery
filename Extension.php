@@ -12,6 +12,7 @@ use App;
 use Request;
 
 use CupNoodles\InstaGallery\Models\InstaAccounts;
+use CupNoodles\InstaGallery\Models\InstaGallerySettings;
 /*
 * InstaGallery extension for TastyIgniter
 */
