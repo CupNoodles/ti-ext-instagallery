@@ -106,8 +106,7 @@ class InstaAccounts extends \Admin\Classes\AdminController
         }
         else{
             $model = $account_id;
-            $account_id = $model->account_id;
-
+            $account_id = $model->id;
         }
         
         
