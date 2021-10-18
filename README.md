@@ -31,4 +31,8 @@ Now, back in your Facebook App settings under "Roles"=>"Roles" click on "Add Ins
 "User Token Generator", you should see your test user with a button "Generate Token". Click the button now and it'll ask you to log into your instagram account yet again, and click "Allow" on the permissions that it's asking to grant. You'll then get a long-lived access token! Save this somewhere safe, or put it directly into your TastyIgniter admin under Display => Instagram Users
 
 
+### Getting a Token without the User Token Generator
+
+On occasion, it looks like the User Token Generator fails ot provide a long-lived access token. In this case, it's also possible to use the Oauth Flow described in the 3 step process at https://developers.facebook.com/docs/instagram-basic-display-api/guides/getting-access-tokens-and-permissions and https://developers.facebook.com/docs/instagram-basic-display-api/guides/long-lived-access-tokens.
+
 
