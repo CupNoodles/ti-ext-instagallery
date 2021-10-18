@@ -103,10 +103,11 @@ class InstaAccounts extends \Admin\Classes\AdminController
 
         if(!is_object($account_id)){
             $model = $this->formFindModelObject($account_id);
-            $account_id = $model->account_id;
         }
         else{
             $model = $account_id;
+            $account_id = $model->account_id;
+
         }
         
         
