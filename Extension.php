@@ -93,8 +93,8 @@ class Extension extends BaseExtension
                 'child' => [
                     'units' => [
                         'priority' => 20,
-                        'class' => 'InstaAccounts',
-                        'href' => admin_url('cupnoodles/instagallery/instaaccounts'),
+                        'class' => 'InstaMedia',
+                        'href' => admin_url('cupnoodles/instagallery/instamedia'),
                         'title' => lang('cupnoodles.instagallery::default.side_menu'),
                         'permission' => 'Admin.InstaGallery',
                     ],

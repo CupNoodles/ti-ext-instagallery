@@ -8,6 +8,7 @@ use DB;
 use GuzzleHttp\Client;
 
 use CupNoodles\InstaGallery\Models\InstaMedia;
+use CupNoodles\InstaGallery\Models\InstaGallerySettings;
 
 class InstaAccounts extends \Admin\Classes\AdminController
 {
@@ -118,24 +119,52 @@ class InstaAccounts extends \Admin\Classes\AdminController
         }
         if($httpResponse->getStatusCode() == 200){
             $response = json_decode($httpResponse->getBody());
-            // remove all previous media entries for this account
-            InstaMedia::where('account_id', $account_id)->delete();
+            
+
+            //InstaMedia::where('account_id', $account_id)->delete();
+            $media_keys = [];
             $count = 0;
             foreach($response->data as $media){
                 if($count < $model->cache_num){
-                    InstaMedia::create([
-                        'account_id' => $account_id,
-                        'media_id' => $media->id,
-                        'caption' => $media->caption,
-                        'media_type' => $media->media_type,
-                        'media_url' => $media->media_url,
-                        'created_at' => $media->timestamp,
-                        'permalink' => $media->permalink,
-                        'updated_at' => DB::raw('now()')
-                    ]);
+                    // don't use updateOrInsert so that we don't override changes we've made to captions
+                    if(InstaMedia::where('media_id', $media->id)->exists()){
+                        InstaMedia::update(
+                            [   
+                                'media_id' => $media->id
+                            ],
+                            [
+                                'account_id' => $account_id,
+                                'caption' => $media->caption,
+                                'media_type' => $media->media_type,
+                                'media_url' => $media->media_url,
+                                'created_at' => $media->timestamp,
+                                'permalink' => $media->permalink,
+                                'updated_at' => DB::raw('now()')
+                            ]);
+                    }
+                    else{
+                        InstaMedia::insert(
+                            [
+                                'media_id' => $media->id,
+                                'account_id' => $account_id,
+                                'caption' => $media->caption,
+                                'media_type' => $media->media_type,
+                                'media_url' => $media->media_url,
+                                'created_at' => $media->timestamp,
+                                'permalink' => $media->permalink,
+                                'updated_at' => DB::raw('now()'),
+                                'active' => (bool)InstaGallerySettings::get('auto_active')
+                            ]);
+                    }
+                    
+                        $media_keys []= $media->id;
                 }
                 $count++;
             }
+
+            // remove media not within the count
+            InstaMedia::where('account_id', $account_id)->whereNotIn('media_id', $media_keys)->delete();
+
         }
         return [$response];
     }
