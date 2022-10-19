@@ -30,11 +30,11 @@ return [
                 'span' => 'left',
                 'default' => '15',
             ],
-            'create_sliders' => [
-                'label' => 'lang:cupnoodles.instagallery::default.create_sliders',
+            'auto_active' => [
+                'label' => 'lang:cupnoodles.instagallery::default.auto_active',
                 'type' => 'switch',
                 'span' => 'left',
-                'default' => 'false',
+                'default' => 'true',
             ],
         ],
         'rules' => [

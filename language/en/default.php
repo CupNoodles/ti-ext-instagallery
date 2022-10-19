@@ -18,6 +18,7 @@ return [
     'text_form_name' => 'Instagram Profile Form',
     'caption' => 'Caption',
     'url_override' => 'Link URL',
+    'auto_active' => 'New Post are active by default',
     
     'refresh_access_token' => 'Refresh Access Token',
     'refresh_media' => 'Refresh Media from Instagram',
