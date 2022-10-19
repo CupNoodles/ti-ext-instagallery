@@ -118,24 +118,32 @@ class InstaAccounts extends \Admin\Classes\AdminController
         }
         if($httpResponse->getStatusCode() == 200){
             $response = json_decode($httpResponse->getBody());
-            // remove all previous media entries for this account
-            InstaMedia::where('account_id', $account_id)->delete();
+            
+
+            //InstaMedia::where('account_id', $account_id)->delete();
+            $media_keys = [];
             $count = 0;
             foreach($response->data as $media){
                 if($count < $model->cache_num){
-                    InstaMedia::create([
-                        'account_id' => $account_id,
-                        'media_id' => $media->id,
-                        'caption' => $media->caption,
-                        'media_type' => $media->media_type,
-                        'media_url' => $media->media_url,
-                        'created_at' => $media->timestamp,
-                        'permalink' => $media->permalink,
-                        'updated_at' => DB::raw('now()')
-                    ]);
+                    InstaMedia::updateOrInsert(
+                        ['media_id' => $media->id],
+                        [
+                            'account_id' => $account_id,
+                            'caption' => $media->caption,
+                            'media_type' => $media->media_type,
+                            'media_url' => $media->media_url,
+                            'created_at' => $media->timestamp,
+                            'permalink' => $media->permalink,
+                            'updated_at' => DB::raw('now()')
+                        ]);
+                        $media_keys []= $media->id;
                 }
                 $count++;
             }
+
+            // remove media not within the count
+            InstaMedia::where('account_id', $account_id)->whereNotIn('media_id', $media_keys)->delete();
+
         }
         return [$response];
     }

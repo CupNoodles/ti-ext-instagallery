@@ -29,11 +29,14 @@ class InstaMedia extends Model
         'media_url',
         'permalink',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'active'
     ];
 
     public $relation = [
-        'belongsTo' => ['CupNoodles\InstaGallery\Models\InstaAccounts', 'account_id', 'id']
+        'belongsTo' => [
+            'accounts' => ['CupNoodles\InstaGallery\Models\InstaAccounts', 'foreignKey' => 'account_id', 'otherKey' => 'id']
+        ]
     ];
 
     public static function getByUsername($username){
