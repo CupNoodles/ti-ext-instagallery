@@ -120,18 +120,13 @@ class InstaAccounts extends \Admin\Classes\AdminController
         if($httpResponse->getStatusCode() == 200){
             $response = json_decode($httpResponse->getBody());
             
-
-            //InstaMedia::where('account_id', $account_id)->delete();
             $media_keys = [];
             $count = 0;
             foreach($response->data as $media){
                 if($count < $model->cache_num){
                     // don't use updateOrInsert so that we don't override changes we've made to captions
                     if(InstaMedia::where('media_id', $media->id)->exists()){
-                        InstaMedia::update(
-                            [   
-                                'media_id' => $media->id
-                            ],
+                        InstaMedia::where('media_id', $media->id)->update(
                             [
                                 'account_id' => $account_id,
                                 'caption' => $media->caption,
