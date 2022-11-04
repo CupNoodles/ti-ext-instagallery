@@ -32,7 +32,6 @@ $config['list']['columns'] = [
         'sortable' => false,
         'formatter' => function($something, $column, $value){
             return '<img src="' . $value . '" class="admin-inline-instagallery-img" />';
-            
         },
     ],
     'display_title' => [
