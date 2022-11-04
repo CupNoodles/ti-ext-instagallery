@@ -66,7 +66,7 @@ class InstaMedia extends \Admin\Classes\AdminController
         $post = post();
 
         $media = InstaMediaModel::where('media_id', $post['media_id'])->first();
-        $media->active = (bool)$post['active'];
+        $media->active = $post['active'] == 'true' ? 1 : 0;
         $media->save();
         die();
 
