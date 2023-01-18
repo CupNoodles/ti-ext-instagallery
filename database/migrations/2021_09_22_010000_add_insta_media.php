@@ -24,6 +24,12 @@ class AddInstaMedia extends Migration
             $table->text('caption');
             $table->text('media_url');
             $table->string('permalink');
+            // gallery-qol-additions
+            $table->boolean('active');
+            $table->string('display_title');
+            $table->string('display_caption');
+            $table->string('url');
+            
             $table->nullableTimestamps();
         });
     }

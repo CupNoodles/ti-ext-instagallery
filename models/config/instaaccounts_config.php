@@ -17,6 +17,11 @@ $config['list']['toolbar'] = [
             'data-request-data' => "_method:'DELETE'",
             'data-request-confirm' => 'lang:admin::lang.alert_warning_confirm',
         ],
+        'media' => [
+            'label' => lang('cupnoodles.instagallery::default.media'),
+            'class' => 'btn btn-default',
+            'href' => 'cupnoodles/instagallery/instamedia',
+        ],
     ],
 ];
 

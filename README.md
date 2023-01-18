@@ -36,3 +36,22 @@ Now, back in your Facebook App settings under "Roles"=>"Roles" click on "Add Ins
 On occasion, it looks like the User Token Generator fails ot provide a long-lived access token. In this case, it's also possible to use the Oauth Flow described in the 3 step process at https://developers.facebook.com/docs/instagram-basic-display-api/guides/getting-access-tokens-and-permissions and https://developers.facebook.com/docs/instagram-basic-display-api/guides/long-lived-access-tokens.
 
 
+### Usage
+
+Install this extension by copying it to `extensions/cupnoodles/instagallery`.
+
+This extension will create new fields for each instagram post which will include a title (blank by default), the caption (will be inserted from instagram), and a media URL. When auto-updating, the caption will not be overwritten, in case you've made changes to how you'd like it to be displayed. The media URL will be updated, as instagrams content URLs expire after a short period. 
+
+### Display
+
+Use something like the following to in your template files in order to display instagram posts for any account.
+
+```
+@php
+    $medias = \CupNoodles\InstaGallery\Models\InstaMedia::getByUsername('my_instagram_account');
+@endphp
+@foreach ($medias as $media)
+    <img src="{{ $media->media_url }}" alt="{{ $slide->display_title }}" />
+    {{ $slide->caption }}
+@endforeach
+```

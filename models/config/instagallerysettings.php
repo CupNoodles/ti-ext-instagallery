@@ -30,6 +30,12 @@ return [
                 'span' => 'left',
                 'default' => '15',
             ],
+            'auto_active' => [
+                'label' => 'lang:cupnoodles.instagallery::default.auto_active',
+                'type' => 'switch',
+                'span' => 'left',
+                'default' => 'true',
+            ],
         ],
         'rules' => [
 
