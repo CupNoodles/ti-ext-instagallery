@@ -68,7 +68,7 @@ class Extension extends BaseExtension
                 $controller->onRefreshMedia('edit', $account);
 
             }
-        })->cron('*/'.(InstaGallerySettings::get('media_update_frequency')).' * * * *');
+        })->cron('*/'.(InstaGallerySettings::get('media_update_frequency') ? InstaGallerySettings::get('media_update_frequency') : '15' ).' * * * *');
 
     }
 
